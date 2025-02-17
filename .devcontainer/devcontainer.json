@@ -1,0 +1,33 @@
+{
+    "name": "Hadoop Dev Container",
+    "dockerFile": "../Dockerfile", // 使用你的 Dockerfile
+    "context": "..", // 设置上下文为当前目录
+    "extensions": [
+        "redhat.java", // 安装 Java 插件
+        "ms-azuretools.vscode-docker" // 安装 Docker 插件
+    ],
+    "settings": {
+        "java.home": "/usr/lib/jvm/java-8-openjdk-amd64", // 配置容器中的 Java 环境
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": [
+        "mvn install", // 如果是 Maven 项目，可以自动执行安装依赖
+        "echo 'Hadoop services will be started by entrypoint.sh'" // 提示 Hadoop 服务由 entrypoint.sh 启动
+    ],
+    "remoteUser": "root", // 使用 root 用户
+    "runArgs": [
+        "--privileged", // 可能需要这个参数来获得额外权限
+        "--entrypoint",
+        "/entrypoint.sh", // 显式指定 entrypoint.sh 为入口脚本
+        "-p",
+        "8088:8088",
+        "-p",
+        "9000:9000",
+        "-p",
+        "50070:50070", // 映射 Hadoop 的端口
+        "-p",
+        "50075:50075",
+        "-p",
+        "50090:50090"
+    ]
+}
