@@ -32,7 +32,7 @@ RUN echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh 
     && echo "export HADOOP_PREFIX=$HADOOP_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 
 # 开放Hadoop相关端口
-EXPOSE 8088 50070 50075 50090 9000 50010 50020 50030
+EXPOSE 8088 9870 50070 50075 50090 9000 50010 50020 50030
 
 # 启动脚本
 COPY DockerConfig/entrypoint.sh /entrypoint.sh
