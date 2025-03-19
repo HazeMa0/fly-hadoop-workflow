@@ -17,6 +17,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -25,32 +28,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.Main [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Main [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab1 [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lab1 [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;我会在意&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/project/bigdata/code/lab1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.archetype.catalogs&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.haze.bigdata.Main.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.org.bigdata.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.Main [clean].executor": "Run",
+    "Maven.Main [package].executor": "Run",
+    "Maven.lab1 [clean].executor": "Run",
+    "Maven.lab1 [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHELLCHECK.PATH": "我会在意",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/project/bigdata/code/lab1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run",
+    "应用程序.haze.bigdata.Main.executor": "Run",
+    "应用程序.org.bigdata.Main.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Merge Requests" />
@@ -68,20 +72,20 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.3971098" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.3971098" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.3971098" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.31489596" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.31489596" />
       <window_info anchor="bottom" id="Profiler" order="5" show_stripe_button="false" weight="0.3300578" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3300578" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.330292" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.39704272" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.2973713" />
       <window_info anchor="bottom" id="Services" order="9" weight="0.3485549" />
-      <window_info anchor="right" id="Notifications" order="0" sideWeight="0.5009259" weight="0.3300866" />
+      <window_info anchor="right" id="Notifications" order="0" sideWeight="0.5009259" weight="0.24340948" />
       <window_info anchor="right" id="AIAssistant" order="1" show_stripe_button="false" weight="0.2628023" />
-      <window_info anchor="right" id="Database" order="2" sideWeight="0.5009259" weight="0.17135325" />
+      <window_info anchor="right" id="Database" order="2" sideWeight="0.501287" weight="0.3300866" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
-      <window_info active="true" anchor="right" id="Maven" order="4" sideWeight="0.5009259" visible="true" weight="0.3300866" />
+      <window_info anchor="right" id="Maven" order="4" sideWeight="0.5009259" weight="0.24340948" />
       <window_info anchor="right" id="Endpoints" order="5" sideWeight="0.5009259" weight="0.33011132" />
-      <window_info anchor="right" id="Coverage" order="6" sideWeight="0.49907407" side_tool="true" weight="0.17135325" />
+      <window_info anchor="right" id="Coverage" order="6" sideWeight="0.49871302" side_tool="true" weight="0.3300866" />
     </layout>
   </component>
   <component name="RunManager">
@@ -101,12 +105,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-33fa658e685a-intellij.indexing.shared.core-IU-251.20015.29" />
-        <option value="bundled-js-predefined-d6986cc7102b-4027fba43365-JavaScript-IU-251.20015.29" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.109" />
+        <option value="bundled-js-predefined-d6986cc7102b-d159365566ee-JavaScript-IU-251.23774.109" />
       </set>
     </attachedChunks>
   </component>
@@ -141,6 +150,8 @@
       <workItem from="1739779317501" duration="63000" />
       <workItem from="1739779706892" duration="16000" />
       <workItem from="1739779731101" duration="2139000" />
+      <workItem from="1742381639595" duration="11000" />
+      <workItem from="1742381668091" duration="949000" />
     </task>
     <servers />
   </component>

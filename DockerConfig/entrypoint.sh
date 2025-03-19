@@ -5,7 +5,7 @@ touch ~/.ssh/config
 printf "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n" > ~/.ssh/config
 
 # 启动SSH服务
-service ssh start
+sudo service ssh start
 
 # 格式化HDFS（仅在第一次运行时执行）
 if [ ! -f /hadoop/data/namenode/formatted ]; then
@@ -16,6 +16,8 @@ fi
 # 启动Hadoop服务
 start-dfs.sh
 start-yarn.sh
+
+echo "INFO: Initial works finished."
 
 # 保持容器运行
 tail -f /dev/null

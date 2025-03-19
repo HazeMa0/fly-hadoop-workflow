@@ -64,11 +64,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
 
-        // For local debug
-        // You should delete this when you want to submit .jar for hadoop
-       conf.set("mapred.job.tracker", "local");
-       conf.set("fs.default.name", "local");
-       FileUtils.deleteDirectoryIfExists(new File(args[1]));
+        // Code For **LOCAL** debug
+        // You should delete this when you want to submit .jar for **hadoop jar**
+        conf.set("mapred.job.tracker", "local");
+        conf.set("fs.default.name", "local");
+        FileUtils.deleteDirectoryIfExists(new File(args[1]));
 
 
         Job job = Job.getInstance(conf, "Counter");

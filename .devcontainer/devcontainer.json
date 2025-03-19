@@ -14,9 +14,11 @@
         "mvn install", // 如果是 Maven 项目，可以自动执行安装依赖
         "echo 'Hadoop services will be started by entrypoint.sh'" // 提示 Hadoop 服务由 entrypoint.sh 启动
     ],
-    "remoteUser": "root", // 使用 root 用户
+    "remoteUser": "hadoop", // 使用 root 用户
     "runArgs": [
         "--privileged", // 可能需要这个参数来获得额外权限
+        "--hostname", 
+        "ubuntu",
         "--entrypoint",
         "/entrypoint.sh", // 显式指定 entrypoint.sh 为入口脚本
         "-p",

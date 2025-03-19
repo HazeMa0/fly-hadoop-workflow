@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 
 # 设置环境变量
-ENV HADOOP_VERSION 2.7.1
+ENV HADOOP_VERSION 3.2.1
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV HADOOP_HOME /usr/local/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
@@ -15,16 +15,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     tar \
     net-tools \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
-
-# 配置SSH无密码登录
-
-RUN mkdir /var/run/sshd && \
-    ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
-    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
-    chmod 0600 ~/.ssh/authorized_keys && \
-    ssh-keyscan localhost 0.0.0.0 2>/dev/null >> ~/.ssh/known_hosts && \
-    ssh-keyscan -H localhost 0.0.0.0 >> ~/.ssh/known_hosts 2>/dev/null
 
 # 下载并安装Hadoop
 RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz \
@@ -39,14 +31,30 @@ COPY DockerConfig/HadoopConfig/* $HADOOP_HOME/etc/hadoop/
 RUN echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh \
     && echo "export HADOOP_PREFIX=$HADOOP_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 
-# 创建Hadoop数据目录
-RUN mkdir -p /hadoop/data/{namenode,datanode}
-
 # 开放Hadoop相关端口
 EXPOSE 8088 50070 50075 50090 9000 50010 50020 50030
 
 # 启动脚本
 COPY DockerConfig/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod a+x /entrypoint.sh
+
+# 创建 Hadoop 用户，并调整权限
+RUN groupadd hadoop_user && \
+    useradd -g hadoop_user -m -s /bin/bash hadoop && \
+    echo "hadoop:hadoop" | chpasswd  && \
+    chown -R hadoop $HADOOP_HOME && \
+    usermod -aG sudo hadoop  && \
+    echo "hadoop ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers  && \
+    mkdir /var/run/sshd
+
+# 切换到 hadoop 用户
+USER hadoop
+
+# 配置SSH无密码登录
+RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+RUN cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+RUN chmod 0600 ~/.ssh/authorized_keys
+RUN ssh-keyscan localhost 0.0.0.0 2>/dev/null >> ~/.ssh/known_hosts
+RUN ssh-keyscan -H localhost 0.0.0.0 >> ~/.ssh/known_hosts 2>/dev/null
 
 ENTRYPOINT ["/entrypoint.sh"]
