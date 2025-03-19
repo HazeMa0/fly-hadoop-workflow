@@ -29,7 +29,7 @@
 ![](readme_pic/2.png)
 2. 在页面上方点击 `从本地项目`，找到您 clone 好的本项目代码文件夹的 `.devcontainer/devcontainer.json` 文件，点击右下角的 `构建容器并继续`；
 ![](readme_pic/3.png)
-3. 稍等片刻，Dev Container 环境就自动创建好了。请确认 IDEA 弹出的若干窗口，进行确认即可。
+3. 正常网络情况下，安装可能需要**10-20分钟**的时间。无需额外操作，Dev Container 环境就自动创建好了。请确认 IDEA 弹出的若干窗口，进行确认即可。
 > **我遇到了问题？**
 >
 > - 请先确认一下您是否能够以可以接受的网速访问 Google 和 ChatGPT，而且 Docker 的守护进程是打开的。如果您确认是网络之外的问题，请在 Issues 反馈，作者可能会进行修复，也许吧。
@@ -38,21 +38,21 @@
 >   2. 重启计算机以解决偶发的网络问题；
 >   3. 从 Docker Desktop > Builds 中找到最近一次的错误构建，获得 Error logs，通过搜索引擎获得问题的解决方案。（请注意，Error logs 可能很长，请尽可能截取后半段，因为搜索引擎会限制搜索词的长度）
 
-4. 在 IDEA 的终端输入 `jps`，可以发现 hadoop 环境已经准备好了。我们默认开放了 8088、9000、50070、50075、50090 五个端口，您可以通过在本机浏览器打开 `localhost:端口号` 来直接访问这些页面。
+4. 在 IDEA 的终端输入 `jps`，可以发现 hadoop 环境已经准备好了。我们默认开放了 9870 (HDFS)、8088 (YARN)、9000、50070、50075、50090 等端口，您可以通过在本机浏览器打开 `localhost:端口号` 来直接访问这些页面。
 ![](readme_pic/4.png)
 
 ## 进行开发
 
-我们已经在项目文件夹准备好了一个 MapReduce 应用作为测试，其会计数 [test-in/](test-in/) 文件夹内文本中每个单词的数量，与官方提供的 `wordCount` 应用功能类似。我们使用 Maven 管理项目。
+我们已经在项目文件夹准备好了一个 MapReduce 应用作为测试，其会计数 [test-in/](./test-in/) 文件夹内文本中每个单词的数量，与官方提供的 `wordCount` 应用功能类似。我们使用 Maven 管理项目。
  - **在一切开始之前**：点击 IDEA 右侧菜单栏的 `maven` 按钮，在打开的面板中找到左上角的 `刷新` 按钮，点击 `重新加载所有 Maven 项目` 以在线加载该项目需要的依赖。
 ![](readme_pic/5.png)
- - **本地模式**：您可以直接点击 IDEA 里 [Main.java](src\main\java\org\bigdata\Main.java) 的运行和调试按钮进行本地运行和调试，十分方便。（然而这是实验讲义和官方安装引导未写明的。）
+ - **本地模式**：您可以直接点击 IDEA 里 [Main.java](./src/main/java/org/bigdata/Main.java) 的运行和调试按钮进行本地运行和调试，十分方便。（然而这是实验讲义和官方安装引导未写明的。）
  - **伪分布模式**
- 您需要先注释掉 [Main.java](src\main\java\org\bigdata\Main.java) 里 `Main.main(String[] args)` 的三行代码，这些代码只用于本地模式的运行和测试：
+ 您需要先注释掉 [Main.java](./src/main/java/org/bigdata/Main.java) 里 `Main.main(String[] args)` 的三行代码，这些代码只用于本地模式的运行和测试：
 
 ```java
-// For local debug
-// You should delete this when you want to submit .jar for hadoop
+// Code For **LOCAL** debug
+// You should delete this when you want to submit .jar for **hadoop jar**
 conf.set("mapred.job.tracker", "local");
 conf.set("fs.default.name", "local");
 FileUtils.deleteDirectoryIfExists(new File(args[1]));
@@ -77,6 +77,7 @@ FileUtils.deleteDirectoryIfExists(new File(args[1]));
     - ./README.md
     - ./test-pseeudo.sh
 换言之，您应该只提交 Java 代码、./target/ 文件夹的 JAR 包和 pom.xml。
+另外，您应该删除 Main.java 里帮助您调试的 `FileUtils` 类和 main 方法的三行调试代码。
 
 3. 项目文件解释
  - [Dockerfile](Dockerfile) 完成必要组件的安装；
