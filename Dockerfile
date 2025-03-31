@@ -90,8 +90,8 @@ RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
     touch ~/.ssh/config && \
     printf "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n" > ~/.ssh/config
 
-COPY DockerConfig/entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
+COPY DockerConfig/entrypoint.sh /entrypoint.sh
+RUN sudo chmod a+x /entrypoint.sh
 
 # 复制配置文件
 COPY DockerConfig/HadoopConfig/* ${HADOOP_HOME}/etc/hadoop/
@@ -100,4 +100,4 @@ COPY DockerConfig/HiveConfig/* ${HIVE_HOME}/conf/
 
 RUN hdfs namenode -format -force
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
