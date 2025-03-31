@@ -3,12 +3,4 @@
         <name>fs.defaultFS</name>
         <value>hdfs://127.0.0.1:9000</value>
     </property>
-    <property>
-        <name>hadoop.localhost.ip</name>
-        <value>127.0.0.1</value>
-    </property>
-    <property>
-        <name>hadoop.rpc.socket.factory.class.default</name>
-        <value>org.apache.hadoop.net.StandardSocketFactory</value>
-    </property>
 </configuration>

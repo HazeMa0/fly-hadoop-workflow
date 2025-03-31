@@ -4,11 +4,13 @@
         <value>1</value>
     </property>
     <property>
-        <name>dfs.namenode.secondary.http-address</name>
-        <value>127.0.0.1:9868</value>
+        <name>dfs.name.dir</name>
+        <value>file:///home/hadoop/hdfs/namenode</value>
     </property>
+        
     <property>
-        <name>dfs.namenode.secondary.https-address</name>
-        <value>127.0.0.1:9869</value>
+        <name>dfs.data.dir</name>
+        <value>file:///home/hadoop/hdfs/datanode</value>
     </property>
+    
 </configuration>

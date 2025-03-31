@@ -1,5 +1,6 @@
 ### For this project ###
 test_out/
+temp/
 
 target/
 !.mvn/wrapper/maven-wrapper.jar

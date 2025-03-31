@@ -1,23 +1,38 @@
 #!/bin/bash
 
-mkdir -p ~/.ssh
-touch ~/.ssh/config
-printf "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n" > ~/.ssh/config
+# 定义一个清理函数，优雅关闭 HBase、YARN 和 HDFS
+function cleanup() {
+    echo "Stopping HBase, YARN, and HDFS..."
+    stop-hbase.sh
+    stop-yarn.sh
+    stop-dfs.sh
+    echo "All services stopped. Exiting..."
+}
+
 
 # 启动SSH服务
 sudo service ssh start
 
-# 格式化HDFS（仅在第一次运行时执行）
-if [ ! -f /hadoop/data/namenode/formatted ]; then
-    hdfs namenode -format -force
-    touch /hadoop/data/namenode/formatted
-fi
+# 监听 SIGTERM 信号，执行 cleanup 函数
+trap cleanup SIGTERM
 
 # 启动Hadoop服务
 start-dfs.sh
-start-yarn.sh
+start-yarn.sh 
+start-hbase.sh
 
-echo "INFO: Initial works finished."
-
-# 保持容器运行
-tail -f /dev/null
+if [ ! -f ~/.initialized ]; then
+    hadoop fs -mkdir /tmp
+    hadoop fs -mkdir /user
+    hadoop fs -mkdir /user/hive
+    hadoop fs -mkdir /user/hive/warehouse
+    hadoop fs -chmod g+w /tmp
+    hadoop fs -chmod g+w /user/hive/warehouse
+    schematool -dbType derby -initSchema
+    touch ~/.initialized
+fi
+echo "INFO: Initialization work has finished."
+while true
+do
+   tail -f /dev/null & wait ${!}
+done
